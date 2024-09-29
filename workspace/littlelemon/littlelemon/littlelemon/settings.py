@@ -37,9 +37,33 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.auth.tokens',
     "restaurant",
     "rest_framework",
+    'djoser',
+    'rest_framework.authtoken',
 ]
+
+#add the following line
+DJOSER={"USER_ID_FIELD":"username"}  #设置了这行代码之后，在使用 Djoser 提供的 API 时，你将使用用户的 username 而不是 id 来进行操作
+
+REST_FRAMEWORK = {
+
+    # Add code to assign default authentication classes
+    'DEFAULT_AUTHENTICATION_CLASSES' :(
+    
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.AllowAny', 
+
+#     ),
+#     'DEFAULT_AUTH_TOKEN_MODEL': 
+#  'authtoken.Token',
+#     'AUTH_TOKEN_NAMESPACE': '',  # Set namespace to an empty string
+    
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
